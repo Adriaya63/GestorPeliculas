@@ -1,0 +1,47 @@
+package org.eda.practica1;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+import org.pmoo.packlaboratorio5.Usuario;
+
+public class ColeccionActores {
+	
+	//Atributos
+	private ArrayList<Actor> lista;
+	
+	//Constructora
+	private ColeccionActores() {
+		this.lista = new ArrayList<Actor>();
+	}
+	
+	private Iterator<Actor> getIterador()
+	{
+		return this.lista.iterator();
+	}
+	
+	public Actor buscarActor(String pNombreActor) {
+		
+	}
+	
+	public void anadirActor(String pNombreActor, ListaNombres pFilmografia) {
+		
+	}
+	
+	public void eliminarActor(String pNombreActor) {
+		
+	}
+	
+	public ListaNombres obtenerFilmografiaDeActor(String pNombreActor) {
+		
+	}
+	
+	public void ordenarLista() {
+		
+	}
+	
+	public void imprimir() {
+		
+	}
+	
+}
