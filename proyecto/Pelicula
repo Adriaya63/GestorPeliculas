@@ -1,0 +1,43 @@
+package org.eda.practica1;
+
+public class Pelicula {
+
+	//Atributos
+		private String titulo;
+		private int recaudacion;
+		private ListaNombres reparto;
+		
+		//Constructora
+		public Pelicula(String pTitulo, int pRecaudacion) {
+			this.titulo = pTitulo;
+			this.recaudacion = pRecaudacion;
+		}
+
+		private boolean equals() {
+			
+		}
+		
+		public boolean tieneEsteTitulo(String pTitulo) {
+			
+		}
+		
+		public void anadirEsteActorAlReparto(String pNombreActor) {
+			
+		}
+		
+		public void eliminarEsteActorDelReparto(String pNombreActor){
+			
+		}
+
+		public ListaNombres obtenerReparto() {
+			
+		}
+		
+		public void incrementarRecaudacionEn(int pIncremento) {
+			
+		}
+		
+		public void imprimir() {
+			
+		}
+}
