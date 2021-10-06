@@ -40,14 +40,14 @@ public class Actor implements Comparable<Actor>{
 	
 	public void anadirEstaPeliculaAFilmografia(String pTitulo) {
 		//PRE: Recibe un titulo de pelicula
-		//POST: Anade ese titulo a la filmografia del actor
+		//POST: Anade ese titulo a la filmografia del actor. Si ya esta, no se hace nada.
 		
 		this.filmografia.anadirNombre(pTitulo);
 	}
 	
 	public void eliminarEstaPeliculaDeFilmografia(String pTitulo) {
-		//PRE: Recibe un titulo de pelicula
-		//POST: Elimina el nombre de la pelicula de la filmografia del actor
+		//PRE: Recibe un titulo de pelicula (String no vacio)
+		//POST: Elimina el nombre de la pelicula de la filmografia del actor en caso de contenerla. Si no la deja igual.
 		
 		this.filmografia.eliminarNombre(pTitulo);
 	}
