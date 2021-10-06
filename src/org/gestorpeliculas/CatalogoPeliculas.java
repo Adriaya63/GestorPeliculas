@@ -11,7 +11,7 @@ public class CatalogoPeliculas {
 		this.lista = new ArrayList<Pelicula>();
 	}
 	
-	public CatalogoPeliculas catalogoPeliculas() {
+	public static CatalogoPeliculas catalogoPeliculas() {
 		if(cp == null) cp = new CatalogoPeliculas();
 		return cp;
 	}

@@ -6,7 +6,7 @@ public class Actor implements Comparable<Actor>{
 	
 	//Constructora y metodos sobreescritos
 	public Actor(String pNombre) {
-		//Constructora de la clase Actor. Recibe un nombre como parameto.
+		//Constructora de la clase Actor. Recibe un nombre como parameto. No puede ser un string vacio!
 		
 		this.nombre = pNombre;
 		this.filmografia = new ListaNombres();

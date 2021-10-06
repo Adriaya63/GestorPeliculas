@@ -13,7 +13,7 @@ public class ColeccionActores {
 		this.lista = new ArrayList<Actor>();
 	}
 	
-	public ColeccionActores getColAct() {
+	public static ColeccionActores getColAct() {
 		if(colAct == null) colAct = new ColeccionActores();
 		return colAct;
 		
