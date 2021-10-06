@@ -35,7 +35,7 @@ public class Actor implements Comparable<Actor>{
 		//PRE: Recibe un String con un nombre
 		//POST: Devuelve un booleano indicando si el actor tiene ese nombre
 		
-		return this.nombre == pNombre;
+		return this.nombre.equals(pNombre);
 	}
 	
 	public void anadirEstaPeliculaAFilmografia(String pTitulo) {
