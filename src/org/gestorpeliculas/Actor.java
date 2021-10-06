@@ -31,6 +31,12 @@ public class Actor implements Comparable<Actor>{
 	}
 	
 	//Metodos
+	public void setearFilmografia(ListaNombres pFilmografia){
+		//PRE: recibe un objeto de tipo ListaNombres
+		//POST: establece la filmografia como la del actor
+		this.filmografia = pFilmografia;
+	}
+
 	public boolean tieneEsteNombre(String pNombre) {
 		//PRE: Recibe un String con un nombre
 		//POST: Devuelve un booleano indicando si el actor tiene ese nombre
@@ -62,7 +68,8 @@ public class Actor implements Comparable<Actor>{
 	public void imprimir() {
 		//PRE:
 		//POST: imprime informacion sobre el actor
-		
+		System.out.println("Nombre: "+this.nombre);
+		this.filmografia.imprimir();
 	}
 
 }

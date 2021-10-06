@@ -30,10 +30,16 @@ public class Pelicula {
 		return pel.tieneEsteTitulo(this.titulo);
 	}
 	
+	public void setearReparto(ListaNombres pReparto){
+		//PRE: recibe un objeto de tipo ListaNombres
+		//POST: establece el reparto como el de la pelicula
+		this.reparto = pReparto;
+	}
+
 	public boolean tieneEsteTitulo(String pTitulo) {
 		//PRE: Recibe un String con el titulo de una pelicula
 		//POST: Devuelve un booleano indicando si esta pelicula tiene ese titulo
-		
+			
 		return this.titulo == pTitulo;
 	}
 	
@@ -68,5 +74,8 @@ public class Pelicula {
 	public void imprimir() {
 		//PRE:
 		//POST: imprime por consola informacion relevante sobre la pelicula
+
+		System.out.println("Titulo: "+this.titulo);
+		this.reparto.imprimir();
 	}
 }
