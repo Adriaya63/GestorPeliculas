@@ -30,11 +30,6 @@ public class Pelicula {
 		return pel.tieneEsteTitulo(this.titulo);
 	}
 	
-	public void setearReparto(ListaNombres pReparto){
-		//PRE: recibe un objeto de tipo ListaNombres
-		//POST: establece el reparto como el de la pelicula
-		this.reparto = pReparto;
-	}
 
 	public boolean tieneEsteTitulo(String pTitulo) {
 		//PRE: Recibe un String con el titulo de una pelicula

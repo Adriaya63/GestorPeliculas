@@ -31,11 +31,6 @@ public class Actor implements Comparable<Actor>{
 	}
 	
 	//Metodos
-	public void setearFilmografia(ListaNombres pFilmografia){
-		//PRE: recibe un objeto de tipo ListaNombres
-		//POST: establece la filmografia como la del actor
-		this.filmografia = pFilmografia;
-	}
 
 	public boolean tieneEsteNombre(String pNombre) {
 		//PRE: Recibe un String con un nombre
