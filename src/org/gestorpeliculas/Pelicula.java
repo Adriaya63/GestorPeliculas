@@ -39,13 +39,13 @@ public class Pelicula {
 	public boolean tieneEsteTitulo(String pTitulo) {
 		//PRE: Recibe un String con el titulo de una pelicula
 		//POST: Devuelve un booleano indicando si esta pelicula tiene ese titulo
-			
-		return this.titulo == pTitulo;
+    
+		return this.titulo.equals(pTitulo);
 	}
 	
 	public void anadirEsteActorAlReparto(String pNombreActor) {
 		//PRE: Recibe un String con el nombre del actor que es parte del reparto de la pelicula
-		//POST: Anade el actor al reparto de la pelicula
+		//POST: Anade el actor al reparto de la pelicula. En caso de estar lo deja igual.
 		
 		this.reparto.anadirNombre(pNombreActor);
 	}

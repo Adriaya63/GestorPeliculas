@@ -12,6 +12,7 @@ public class CatalogoPeliculas {
 	}
 	
 	public static CatalogoPeliculas getCatPel() {
+  
 		if(cp == null) cp = new CatalogoPeliculas();
 		return cp;
 	}
@@ -49,7 +50,7 @@ public class CatalogoPeliculas {
 	
 	public void eliminarPelicula(String pTitulo) {
 		//PRE: Recibe un String con el titulo de una pelicula
-		//POST: Si esta la pelicula, se elimina del catalogo de peliculas y de todas las filmogradias de actores en las que aparece.
+		//POST: Si esta la pelicula, se elimina del catalogo de peliculas y de todas las filmografias de actores en las que aparece.
 		//		Si no esta, no se hace nada
 
 		Pelicula aux = this.buscarPelicula(pTitulo);

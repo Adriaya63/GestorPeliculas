@@ -10,10 +10,16 @@ public class ListaNombres {
 		this.lista = new HashMap<String, Integer>();
 	}
 	
+	public int getSize() {
+		//PRE:
+		//POST: Devuelve el numero de elementos de la lista de nombres
+		return this.lista.size();
+	}
+	
 	public void anadirNombre(String pNombre) {
 		//PRE: Recibe un string con el nombre a insertar
 		//POST: Se inserta el nombre como key en la tabla de hash y su valor es 0
-		this.lista.put(pNombre, 0);
+		if(pNombre != "") this.lista.put(pNombre, 0);
 	}
 	
 	public void eliminarNombre(String pNombre) {

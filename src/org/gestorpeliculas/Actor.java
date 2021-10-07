@@ -6,7 +6,7 @@ public class Actor implements Comparable<Actor>{
 	
 	//Constructora y metodos sobreescritos
 	public Actor(String pNombre) {
-		//Constructora de la clase Actor. Recibe un nombre como parameto.
+		//Constructora de la clase Actor. Recibe un nombre como parameto. No puede ser un string vacio!
 		
 		this.nombre = pNombre;
 		this.filmografia = new ListaNombres();
@@ -41,19 +41,19 @@ public class Actor implements Comparable<Actor>{
 		//PRE: Recibe un String con un nombre
 		//POST: Devuelve un booleano indicando si el actor tiene ese nombre
 		
-		return this.nombre == pNombre;
+		return this.nombre.equals(pNombre);
 	}
 	
 	public void anadirEstaPeliculaAFilmografia(String pTitulo) {
 		//PRE: Recibe un titulo de pelicula
-		//POST: Anade ese titulo a la filmografia del actor
+		//POST: Anade ese titulo a la filmografia del actor. Si ya esta, no se hace nada.
 		
 		this.filmografia.anadirNombre(pTitulo);
 	}
 	
 	public void eliminarEstaPeliculaDeFilmografia(String pTitulo) {
-		//PRE: Recibe un titulo de pelicula
-		//POST: Elimina el nombre de la pelicula de la filmografia del actor
+		//PRE: Recibe un titulo de pelicula (String no vacio)
+		//POST: Elimina el nombre de la pelicula de la filmografia del actor en caso de contenerla. Si no la deja igual.
 		
 		this.filmografia.eliminarNombre(pTitulo);
 	}
