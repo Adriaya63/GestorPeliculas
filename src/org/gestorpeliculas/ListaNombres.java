@@ -10,10 +10,8 @@ public class ListaNombres {
 		this.lista = new HashMap<String, Integer>();
 	}
 	
-	public int getSize() {
-		//PRE:
-		//POST: Devuelve el numero de elementos de la lista de nombres
-		return this.lista.size();
+	public boolean esta(String pNombre) {
+		return this.lista.get(pNombre) != null;
 	}
 	
 	public void anadirNombre(String pNombre) {

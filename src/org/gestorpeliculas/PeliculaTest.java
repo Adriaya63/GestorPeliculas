@@ -42,31 +42,32 @@ public class PeliculaTest {
 
 	@Test
 	public void testAnadirEsteActorAlReparto() {
-		assertEquals(pel_a.obtenerReparto().getSize(), 0);
 		
 		pel_a.anadirEsteActorAlReparto("a1");
-		assertEquals(pel_a.obtenerReparto().getSize(), 1);
+		assertTrue(pel_a.obtenerReparto().esta("a1"));
 		
 		pel_a.obtenerReparto().eliminarNombre("a1");
-		assertEquals(pel_a.obtenerReparto().getSize(), 0);
+		assertFalse(pel_a.obtenerReparto().esta("a1"));
 		
 		pel_a.anadirEsteActorAlReparto("a1");
 		pel_a.anadirEsteActorAlReparto("a2");
-		assertEquals(pel_a.obtenerReparto().getSize(), 2);
+		assertTrue(pel_a.obtenerReparto().esta("a1"));
+		assertTrue(pel_a.obtenerReparto().esta("a2"));
 	}
 
 	@Test
 	public void testEliminarEsteActorDelReparto() {
-		assertEquals(pel_a.obtenerReparto().getSize(), 0);
 		
 		pel_a.anadirEsteActorAlReparto("p1");
-		assertEquals(pel_a.obtenerReparto().getSize(), 1);
+		assertTrue(pel_a.obtenerReparto().esta("p1"));
+		assertFalse(pel_a.obtenerReparto().esta("p2"));
 		
 		pel_a.eliminarEsteActorDelReparto("p2");
-		assertEquals(pel_a.obtenerReparto().getSize(), 1);
+		assertTrue(pel_a.obtenerReparto().esta("p1"));
+		assertFalse(pel_a.obtenerReparto().esta("p2"));
 		
 		pel_a.eliminarEsteActorDelReparto("p1");
-		assertEquals(pel_a.obtenerReparto().getSize(), 0);
+		assertFalse(pel_a.obtenerReparto().esta("p1"));
 	}
 
 	@Test

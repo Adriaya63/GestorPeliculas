@@ -68,31 +68,35 @@ public class ActorTest {
 
 	@Test
 	public void testAnadirEstaPeliculaAFilmografia() {
-		assertEquals(act_a.obtenerFilmografia().getSize(), 0);
+		assertFalse(act_a.obtenerFilmografia().esta(""));
+		assertFalse(act_a.obtenerFilmografia().esta("p1"));
 		
 		act_a.anadirEstaPeliculaAFilmografia("p1");
-		assertEquals(act_a.obtenerFilmografia().getSize(), 1);
+		assertTrue(act_a.obtenerFilmografia().esta("p1"));
 		
 		act_a.obtenerFilmografia().eliminarNombre("p1");
-		assertEquals(act_a.obtenerFilmografia().getSize(), 0);
+		assertFalse(act_a.obtenerFilmografia().esta("p1"));
 		
 		act_a.anadirEstaPeliculaAFilmografia("p1");
 		act_a.anadirEstaPeliculaAFilmografia("p2");
-		assertEquals(act_a.obtenerFilmografia().getSize(), 2);
+		assertTrue(act_a.obtenerFilmografia().esta("p1"));
+		assertTrue(act_a.obtenerFilmografia().esta("p2"));
 	}
 
 	@Test
 	public void testEliminarEstaPeliculaDeFilmografia() {
-		assertEquals(act_a.obtenerFilmografia().getSize(), 0);
+		assertFalse(act_a.obtenerFilmografia().esta(""));
+		assertFalse(act_a.obtenerFilmografia().esta("p1"));
 		
 		act_a.anadirEstaPeliculaAFilmografia("p1");
-		assertEquals(act_a.obtenerFilmografia().getSize(), 1);
+		assertTrue(act_a.obtenerFilmografia().esta("p1"));
 		
 		act_a.eliminarEstaPeliculaDeFilmografia("p2");
-		assertEquals(act_a.obtenerFilmografia().getSize(), 1);
+		assertTrue(act_a.obtenerFilmografia().esta("p1"));
+		assertFalse(act_a.obtenerFilmografia().esta("p2"));
 		
 		act_a.eliminarEstaPeliculaDeFilmografia("p1");
-		assertEquals(act_a.obtenerFilmografia().getSize(), 0);
+		assertFalse(act_a.obtenerFilmografia().esta("p1"));
 	}
 
 

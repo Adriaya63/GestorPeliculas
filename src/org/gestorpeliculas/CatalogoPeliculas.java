@@ -11,8 +11,13 @@ public class CatalogoPeliculas {
 		this.lista = new ArrayList<Pelicula>();
 	}
 	
-	public static CatalogoPeliculas getCatPel() {
-  
+	//Metodo para facilitar los test de la clase CatalogoPeliculas
+	//No usar fuera de los test
+	public static void eliminarCatalogo() {
+		cp = null;
+	}
+	
+	public static CatalogoPeliculas getCatalogo() {
 		if(cp == null) cp = new CatalogoPeliculas();
 		return cp;
 	}

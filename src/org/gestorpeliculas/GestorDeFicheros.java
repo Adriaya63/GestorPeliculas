@@ -10,10 +10,10 @@ import java.util.Scanner;
 public class GestorDeFicheros {
 	private static GestorDeFicheros gdf;
 	//Ruta relativa del fichero a leer
-	private final String rutaFicheroEntrada = ".." + File.separator + ".." + File.separator + "files" + File.separator + "input.txt";
+	private final String rutaFicheroEntrada = System.getProperty("user.dir") + File.separator + "src" + File.separator + "files" + File.separator + "input.txt";
 	private Scanner entrada;
 	
-	private final String rutaFicheroSalida = ".." + File.separator + ".." + File.separator + "files" + File.separator + "output.txt";
+	private final String rutaFicheroSalida = System.getProperty("user.dir") + File.separator + "src" + File.separator + "files" + File.separator + "output.txt";
 	private FileWriter salida;
 	//Constructora y getters
 	@SuppressWarnings("unused")
@@ -42,31 +42,29 @@ public class GestorDeFicheros {
 		//PRE: El fichero ha de contener los datos con el formato: PELICULA --->>> ACTOR1 ### ACTOR2.... donde cada linea es una pelicula distinta.
 		//POST: Lee linea a linea el fichero y se encarga de llamar a CatalogoPeliculas y ColeccionActores por cada pelicula y actor que encuentra
 		//		de tal forma que se registran todas las peliculas y actores que aparecen en el fichero.
-		try{
-			this.entrada = new Scanner(new FileReader(this.rutaFicheroEntrada));
 
 			String linea;
 			while (entrada.hasNext()) {
 				linea = entrada.nextLine();
 				String[] cadena1 = linea.split("--->>>");
-				if(cadena1.length>1){
+				
+        if(cadena1.length>1){
 					String pelicula = cadena1[0];
 					String[] cadena2 = cadena1[1].split("[#]+");
 					ListaNombres actores = new ListaNombres();
 					ListaNombres peliculas = new ListaNombres();
 					peliculas.anadirNombre(pelicula);
-					for(int i=0;i<cadena2.length;i++) {
-					actores.anadirNombre(cadena2[i]);
-					ColeccionActores.getColAct().anadirActor(cadena2[i], peliculas);
+					
+          for(int i=0;i<cadena2.length;i++) {
+					  actores.anadirNombre(cadena2[i]);
+					  ColeccionActores.getColAct().anadirActor(cadena2[i], peliculas);
 					}
-					CatalogoPeliculas.getCatalogo().anadirPelicula(pelicula, actores);
-			
+					
+          CatalogoPeliculas.getCatalogo().anadirPelicula(pelicula, actores);
 				}
 			}
+    
 			entrada.close();
-		}
-			catch(IOException e) {e.printStackTrace();}
-   }
 	}
 	
 	public void guardarDatos() {
