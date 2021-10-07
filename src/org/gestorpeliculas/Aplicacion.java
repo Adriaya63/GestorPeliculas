@@ -47,7 +47,7 @@ public class Aplicacion {
 			else if (res == 3){
 				System.out.println("Introduzca el nombre del actor.");
 				String nombreActor = scr.nextLine();
-				this.obtenerFilmografiaActor(nombreActor)
+				this.obtenerFilmografiaActor(nombreActor);
 			}
 			else if (res == 4){
 				System.out.println("Introduzca el nombre de la pelicula.");
@@ -66,7 +66,7 @@ public class Aplicacion {
 				this.eliminarActor(nombreActor);
 			}
 			else if (res == 7){this.cargarDatosEnFichero();}
-			else if (res == 8){this.obtenerListaOrdenadaDeActores()}
+			else if (res == 8){this.obtenerListaOrdenadaDeActores();}
 		}
 	}
 	
@@ -110,14 +110,14 @@ public class Aplicacion {
 		//PRE: Recibe el titulo de una pelicula en formato String
 		//POST: LLama a CatalogoPeliculas para que se encarge de obtener el reparto de la pelicula. en caso de que la pelicula no exista
 		// 		devolvera null.
-		CatalogoPeliculas.getCatPel().obtenerRepartoDePelicula(pTitulo);
+		CatalogoPeliculas.getCatalogo().obtenerRepartoDePelicula(pTitulo);
 	}
 	
 	public void incrementarRecaudacionPelicula(String pTitulo, int pIncremento) {
 		//PRE: Recibe el titulo de una pelicula en formato String y un int que conforma el incremento de la recaudacion de la pelicula
 		//POST: Llama a CatalogoPeliculas para que se encargue de buscar la pelicula e incermentar su recaudacion en caso de encontrarla.
 		//		En caso contrario se indicará que la pelicula no esta añadida.
-		CatalogoPeliculas.getCatPel().incrementarRecaudacionPelicula(pTitulo, pIncremento);
+		CatalogoPeliculas.getCatalogo().incrementarRecaudacionPelicula(pTitulo, pIncremento);
 	}
 	
 	public _____ obtenerListaOrdenadaDeActores() {

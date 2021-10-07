@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.Map.Entry;
 import java.util.Scanner;
 
 public class GestorDeFicheros {
@@ -73,6 +75,41 @@ public class GestorDeFicheros {
 		//POST: Guarda en el fichero de salida la informacion de los actores y películas atendiendo al siguiente formato:  PELICULA --->>> ACTOR1 ### ACTOR2.... 
 		//		donde cada linea es una pelicula distinta.
 		
+		Iterator<Pelicula> peliculas = CatalogoPeliculas.getCatalogo().iterator();
+		String datos = "";
+		
+		while(peliculas.hasNext()) {
+			Pelicula pel = peliculas.next();
+			String linea = pel.getTitulo();
+			linea+= " --->>> ";
+			
+			Iterator<Entry<String, Integer>> reparto = pel.obtenerReparto().iterator();
+			boolean firstActor = true;
+			
+			while(reparto.hasNext()) {
+				String actor = reparto.next().getKey();
+				
+				if(!firstActor) { 
+					linea += " ### " + actor;
+				
+				}else{
+					linea += actor;
+					firstActor = false;
+				}	
+			}
+			
+			datos += linea + " \n";
+			
+		}
+		
+		
+		try {
+			salida.write(datos);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		cerrarFicheroSalida();
 	}
 	
 	private void cerrarFicheroEntrada() {
@@ -81,7 +118,7 @@ public class GestorDeFicheros {
 		entrada.close();
 	}
 	
-	public void cerrarFicheroSalida() {
+	private void cerrarFicheroSalida() {
 		//PRE:
 		//POST: Termina la escritura del fichero de salida y lo cierra.
 		

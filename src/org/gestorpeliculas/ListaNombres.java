@@ -1,6 +1,8 @@
 package org.gestorpeliculas;
 
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
 
 public class ListaNombres {
 	private HashMap<String, Integer> lista;
@@ -12,6 +14,11 @@ public class ListaNombres {
 	
 	public boolean esta(String pNombre) {
 		return this.lista.get(pNombre) != null;
+	}
+	
+	//get de iterador para poder cargar los datos en fichero
+	public Iterator<Entry<String, Integer>> iterator(){
+		return this.lista.entrySet().iterator();
 	}
 	
 	public void anadirNombre(String pNombre) {
@@ -34,4 +41,5 @@ public class ListaNombres {
 			System.out.println(entry.getKey());
 		});
 	}
+	
 }

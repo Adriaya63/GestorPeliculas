@@ -1,8 +1,9 @@
 package org.gestorpeliculas;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public class CatalogoPeliculas {
+public class CatalogoPeliculas{
 	private static CatalogoPeliculas cp;
 	private ArrayList<Pelicula> lista;
 	
@@ -15,6 +16,11 @@ public class CatalogoPeliculas {
 	//No usar fuera de los test
 	public static void eliminarCatalogo() {
 		cp = null;
+	}
+	
+	//Get de iterador para poder cargar los datos en el fichero
+	public Iterator<Pelicula> iterator(){
+		return this.lista.iterator();
 	}
 	
 	public static CatalogoPeliculas getCatalogo() {
@@ -76,4 +82,6 @@ public class CatalogoPeliculas {
 		//PRE:
 		//POST: Imprime por consola informacion relevante sobre el catalogo
 	}
+	
+	
 }

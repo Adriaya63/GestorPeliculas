@@ -30,7 +30,11 @@ public class Pelicula {
 		return pel.tieneEsteTitulo(this.titulo);
 	}
 	
-
+	//getTitulo para poder cargar los datos
+	public String getTitulo() {
+		return this.titulo;
+	}
+	
 	public boolean tieneEsteTitulo(String pTitulo) {
 		//PRE: Recibe un String con el titulo de una pelicula
 		//POST: Devuelve un booleano indicando si esta pelicula tiene ese titulo
@@ -70,7 +74,7 @@ public class Pelicula {
 		//PRE:
 		//POST: imprime por consola informacion relevante sobre la pelicula
 
-		System.out.println("Titulo: "+this.titulo);
+		System.out.println("Titulo: "+this.titulo + " Recaudacion: " + this.recaudacion);
 		this.reparto.imprimir();
 	}
 }
