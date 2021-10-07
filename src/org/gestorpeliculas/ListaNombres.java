@@ -23,6 +23,7 @@ public class ListaNombres {
 	public void eliminarNombre(String pNombre) {
 		//PRE: Recibe un string con un nombre (puede estar o no en la tabla)
 		//POST: Se elimina ese nombre en caso de estar. Si noo esta se deja igual.
+		this.lista.remove(pNombre);
 	}
 	
 	public void imprimir() {

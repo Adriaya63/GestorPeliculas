@@ -30,10 +30,11 @@ public class Pelicula {
 		return pel.tieneEsteTitulo(this.titulo);
 	}
 	
+
 	public boolean tieneEsteTitulo(String pTitulo) {
 		//PRE: Recibe un String con el titulo de una pelicula
 		//POST: Devuelve un booleano indicando si esta pelicula tiene ese titulo
-		
+    
 		return this.titulo.equals(pTitulo);
 	}
 	
@@ -68,5 +69,8 @@ public class Pelicula {
 	public void imprimir() {
 		//PRE:
 		//POST: imprime por consola informacion relevante sobre la pelicula
+
+		System.out.println("Titulo: "+this.titulo);
+		this.reparto.imprimir();
 	}
 }

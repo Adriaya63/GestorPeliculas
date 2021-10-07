@@ -49,12 +49,15 @@ public class ColeccionActores {
 		//		Si alguna pelicula aun no esta anadida, se crea una pelicula nueva y se anade con el actor en su reparto.
 		//		Si por el contrario el actor ya existe en la lista, se actualiza su filmografia con un proceso similar al anterior.
 		
+		
 	}
 	
 	public void eliminarActor(String pNombreActor) {
 		//PRE: Recibe un String con el nombre de un actor
 		//POST: Si esta el actor, se elimina de la coleccion de actores y de todos los repartos de peliculas en los que aparece.
 		//		Si no esta, no se hace nada
+
+		
 	}
 	
 	public ListaNombres obtenerFilmografiaDeActor(String pNombreActor) {
