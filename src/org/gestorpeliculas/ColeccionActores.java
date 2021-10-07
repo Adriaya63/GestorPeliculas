@@ -12,6 +12,12 @@ public class ColeccionActores {
 	private ColeccionActores() {
 		this.lista = new ArrayList<Actor>();
 	}
+	//Metodo para facilitar los test de la clase ColeccionActores
+	//No usar fuera de los test
+	public static void eliminarColeccion() {
+		colAct = null;
+	}
+	
 	
 	public static ColeccionActores getColAct() {
 		if(colAct == null) colAct = new ColeccionActores();

@@ -22,43 +22,44 @@ public class ListaNombresTest {
 
 	@Test
 	public final void testAnadirNombre() {
-		assertEquals(lista.getSize(), 0);
 		
 		lista.anadirNombre("");
-		assertEquals(lista.getSize(), 0);
+		assertFalse(lista.esta(""));
 		
 		lista.anadirNombre("a1");
-		assertEquals(lista.getSize(), 1);
+		assertTrue(lista.esta("a1"));
 		
 		lista.anadirNombre("a1");
-		assertEquals(lista.getSize(), 1);
+		assertTrue(lista.esta("a1"));
+		assertFalse(lista.esta("a2"));
+		
 		
 		lista.anadirNombre("a2");
-		assertEquals(lista.getSize(), 2);
+		assertTrue(lista.esta("a2"));
 	}
 	
 	@Test
 	public final void testEliminarNombre() {
-		assertEquals(lista.getSize(), 0);
-		
+		assertFalse(lista.esta(""));
 		lista.eliminarNombre("");
-		assertEquals(lista.getSize(), 0);
 		
+		assertFalse(lista.esta("a1"));
 		lista.eliminarNombre("a1");
-		assertEquals(lista.getSize(), 0);
+		assertFalse(lista.esta("a1"));
 		
 		lista.anadirNombre("a1");
-		assertEquals(lista.getSize(), 1);
+		assertTrue(lista.esta("a1"));
 		lista.eliminarNombre("");
-		assertEquals(lista.getSize(), 1);
+		assertTrue(lista.esta("a1"));
 		lista.eliminarNombre("a1");
-		assertEquals(lista.getSize(), 0);
+		assertFalse(lista.esta("a1"));
 		
 		lista.anadirNombre("a1");
 		lista.anadirNombre("a2");
-		assertEquals(lista.getSize(), 2);
+		assertTrue(lista.esta("a1"));
+		assertTrue(lista.esta("a2"));
 		lista.eliminarNombre("a1");
-		assertEquals(lista.getSize(), 1);
+		assertFalse(lista.esta("a1"));
 	}
 
 }
