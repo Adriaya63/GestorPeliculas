@@ -40,12 +40,7 @@ public class CatalogoPeliculas {
 		//		y se comprobará en la coleccion de actores que todos estan añadidos y que contienen el titulo de la pelicula en 
 		//		su filmografía. De ser necesario se añadirán nuevos actores. En caso contrario se seguirá un proceso similar pero
 		//		creando una pelicula nueva.
-		Pelicula aux = this.buscarPelicula(pTitulo);
-		if (aux==null){
-			aux = new Pelicula(pTitulo);
-			aux.setearReparto(pReparto);
-			this.lista.add(aux);
-		}
+	
 	}
 	
 	public void eliminarPelicula(String pTitulo) {
@@ -53,8 +48,7 @@ public class CatalogoPeliculas {
 		//POST: Si esta la pelicula, se elimina del catalogo de peliculas y de todas las filmografias de actores en las que aparece.
 		//		Si no esta, no se hace nada
 
-		Pelicula aux = this.buscarPelicula(pTitulo);
-		if(aux!=null){this.lista.remove(aux);}
+
 	}
 	
 	public ListaNombres obtenerRepartoDePelicula(String pTitulo) {
