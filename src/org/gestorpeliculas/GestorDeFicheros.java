@@ -10,10 +10,10 @@ import java.util.Scanner;
 public class GestorDeFicheros {
 	private static GestorDeFicheros gdf;
 	//Ruta relativa del fichero a leer
-	private final String rutaFicheroEntrada = ".." + File.separator + ".." + File.separator + "files" + File.separator + "input.txt";
+	private final String rutaFicheroEntrada = System.getProperty("user.dir") + File.separator + "src" + File.separator + "files" + File.separator + "input.txt";
 	private Scanner entrada;
 	
-	private final String rutaFicheroSalida = ".." + File.separator + ".." + File.separator + "files" + File.separator + "output.txt";
+	private final String rutaFicheroSalida = System.getProperty("user.dir") + File.separator + "src" + File.separator + "files" + File.separator + "output.txt";
 	private FileWriter salida;
 	//Constructora y getters
 	@SuppressWarnings("unused")
@@ -42,6 +42,16 @@ public class GestorDeFicheros {
 		//PRE: El fichero ha de contener los datos con el formato: PELICULA --->>> ACTOR1 ### ACTOR2.... donde cada linea es una pelicula distinta.
 		//POST: Lee linea a linea el fichero y se encarga de llamar a CatalogoPeliculas y ColeccionActores por cada pelicula y actor que encuentra
 		//		de tal forma que se registran todas las peliculas y actores que aparecen en el fichero.
+		
+		while(entrada.hasNext()) {
+			String linea = entrada.next();
+			String[] pelicula_actores = linea.split("--->>>");
+			
+			if(pelicula_actores.length > 1) {
+				//Linea válida
+				
+			}
+		}
 	}
 	
 	public void guardarDatos() {

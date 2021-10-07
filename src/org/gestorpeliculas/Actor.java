@@ -16,7 +16,8 @@ public class Actor implements Comparable<Actor>{
 	public int compareTo(Actor act) {
 		//PRE: Recibe un actor que va a ser comparado con este
 		//Post: Devuelve un valor negativo si este actor se ordena despues que act; 0 si tienen la misma prioridad 
-		//		y un valor positivo si este actor se ordena antes que act.
+		//		y un valor positivo si este actor se ordena antes que act. Mayusculas(A-Z) > minusculas(a-z) > numeros.
+		//		No se tienen en cuenta apóstrofes u otros signos del estilo.
 		
 		return 0;
 	}
