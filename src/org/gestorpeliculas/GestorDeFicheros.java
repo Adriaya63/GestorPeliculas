@@ -49,19 +49,22 @@ public class GestorDeFicheros {
 			while (entrada.hasNext()) {
 				linea = entrada.nextLine();
 				String[] cadena1 = linea.split("--->>>");
-				String pelicula = cadena1[0];
-				String[] cadena2 = cadena1[1].split("[#]+");
-				ListaNombres actores = new ListaNombres();
-				ListaNombres peliculas = new ListaNombres();
-				peliculas.anadirNombre(pelicula);
-				for(int i=0;i<cadena2.length;i++) {
-				   actores.anadirNombre(cadena2[i]);
-				   ColeccionActores.getColAct().anadirActor(cadena2[i], peliculas);
+				if(cadena1.length>1){
+					String pelicula = cadena1[0];
+					String[] cadena2 = cadena1[1].split("[#]+");
+					ListaNombres actores = new ListaNombres();
+					ListaNombres peliculas = new ListaNombres();
+					peliculas.anadirNombre(pelicula);
+					for(int i=0;i<cadena2.length;i++) {
+					actores.anadirNombre(cadena2[i]);
+					ColeccionActores.getColAct().anadirActor(cadena2[i], peliculas);
+					}
+					CatalogoPeliculas.getCatalogo().anadirPelicula(pelicula, actores);
+			
 				}
-				CatalogoPeliculas.getCatalogo().anadirPelicula(pelicula, actores);
 			}
 			entrada.close();
-			}
+		}
 			catch(IOException e) {e.printStackTrace();}
    }
 	}
