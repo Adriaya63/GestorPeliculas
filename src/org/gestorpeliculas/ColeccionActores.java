@@ -3,7 +3,13 @@ package org.gestorpeliculas;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+<<<<<<< HEAD
+import org.gestorPeliculas.Actor;
+import org.gestorPeliculas.CatalogoPeliculas;
+import org.gestorPeliculas.Pelicula;
+=======
 import java.util.Map.Entry;
+>>>>>>> 6b2dece64c7f8ca7da6692acf3fd3670b3b72c7c
 
 public class ColeccionActores {
 	//MAE que controla todos los actores de la aplicacion
@@ -51,11 +57,12 @@ public class ColeccionActores {
 		//		y se itera sobre su filmografia añadiendo el nombre del actor al reparto de las peliculas en las que aparece. 
 		//		Si alguna pelicula aun no esta anadida, se crea una pelicula nueva y se anade con el actor en su reparto.
 		//		Si por el contrario el actor ya existe en la lista, se actualiza su filmografia con un proceso similar al anterior.
+		if(pNombreActor.equals("")) {return;}
 		Actor act = this.buscarActor(pNombreActor);
-		if(act == null) {
+			if(act == null) {
 				act = new Actor(pNombreActor);
 				this.lista.add(act);
-		}
+			}
 		
 		Iterator<Entry<String, Integer>> itr = pFilmografia.iterator();
 		

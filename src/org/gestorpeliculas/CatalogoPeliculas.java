@@ -51,7 +51,9 @@ public class CatalogoPeliculas{
 		//		y se comprobará en la coleccion de actores que todos estan añadidos y que contienen el titulo de la pelicula en 
 		//		su filmografía. De ser necesario se añadirán nuevos actores. En caso contrario se seguirá un proceso similar pero
 		//		creando una pelicula nueva.
-		
+
+		if(pTitulo.equals("")) {return;}
+
 		Pelicula peli = this.buscarPelicula(pTitulo);
 		if(peli == null) {
 				peli = new Pelicula (pTitulo);
