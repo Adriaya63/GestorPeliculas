@@ -52,8 +52,8 @@ public class CatalogoPeliculas{
 		//		su filmografía. De ser necesario se añadirán nuevos actores. En caso contrario se seguirá un proceso similar pero
 		//		creando una pelicula nueva.
 
-		if(pTitulo.equals("")) {return;}
-
+		if(pTitulo.equals("") || pReparto.getSize() == 0) {return;}
+		
 		Pelicula peli = this.buscarPelicula(pTitulo);
 		if(peli == null) {
 				peli = new Pelicula (pTitulo);
@@ -91,10 +91,9 @@ public class CatalogoPeliculas{
 			Actor act = ColeccionActores.getColAct().buscarActor(nombre);
 			if(act != null) {
 				act.eliminarEstaPeliculaDeFilmografia(pTitulo);
-			}
-			
-			if (act.obtenerFilmografia().getSize() == 0) {
-				ColeccionActores.getColAct().eliminarActor(nombre);
+				if (act.obtenerFilmografia().getSize() == 0) {
+					ColeccionActores.getColAct().eliminarActor(nombre);
+				}
 			}
 		}
 		
