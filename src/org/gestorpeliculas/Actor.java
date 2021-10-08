@@ -15,11 +15,31 @@ public class Actor implements Comparable<Actor>{
 	@Override
 	public int compareTo(Actor act) {
 		//PRE: Recibe un actor que va a ser comparado con este
-		//Post: Devuelve un valor negativo si este actor se ordena despues que act; 0 si tienen la misma prioridad 
-		//		y un valor positivo si este actor se ordena antes que act. Mayusculas(A-Z) > minusculas(a-z) > numeros.
+		//Post: Devuelve un valor negativo si este actor se ordena antes que act; 0 si tienen la misma prioridad 
+		//		y un valor positivo si este actor se ordena desoues que act. Numeros(1-9) < mayusculas(A-Z) < minusculas(a-z)
 		//		No se tienen en cuenta apóstrofes u otros signos del estilo.
 		
-		return 0;
+	    int length1 = this.nombre.length();  
+	    int length2 = act.getNombre().length();  
+	    int limit = Math.min(length1, length2);  
+	    char v1[] = this.nombre.toCharArray();  
+	    char v2[] = act.getNombre().toCharArray();  
+	   
+	    int i = 0;  
+	    while (i < limit) {  
+	        char ch1 = v1[i];  
+	        char ch2 = v2[i];  
+	        if (ch1 != ch2) {  
+	            return ch1 - ch2;  
+	        }  
+	        i++;  
+	    }  
+	    return length1 - length2;  
+	}
+	
+	//Se emplea solo para realizar la comparación
+	public String getNombre() {
+		return this.nombre;
 	}
 	
 	@Override

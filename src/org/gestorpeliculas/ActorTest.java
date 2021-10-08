@@ -39,15 +39,23 @@ public class ActorTest {
 		assertEquals(act_aB.compareTo(new Actor("aB")), 0);
 		
 		
-		assertTrue(act_a.compareTo(act_A) < 0);
-		assertTrue(act_b.compareTo(act_a) < 0);
-		assertTrue(act_a.compareTo(act_B) < 0);
-		assertTrue(act_ba.compareTo(act_ab) < 0);
-		assertTrue(act_aa.compareTo(act_aB) < 0);
+		assertTrue(act_a.compareTo(act_A) > 0);
+		assertTrue(act_b.compareTo(act_a) > 0);
+		assertTrue(act_a.compareTo(act_B) > 0);
+		assertTrue(act_ba.compareTo(act_ab) > 0);
+		assertTrue(act_aa.compareTo(act_aB) > 0);
 		
-		assertTrue(act_A.compareTo(act_a) > 0);
-		assertTrue(act_a.compareTo(act_b) > 0);
-		assertTrue(act_ab.compareTo(act_ba) > 0);
+		assertTrue(act_A.compareTo(act_a) < 0);
+		assertTrue(act_a.compareTo(act_b) < 0);
+		assertTrue(act_ab.compareTo(act_ba) < 0);
+		
+		Actor act_1 = new Actor("1");
+		Actor act_2 = new Actor("2");
+		
+		assertTrue(act_1.compareTo(act_2) < 0);
+		assertTrue(act_2.compareTo(act_1) > 0);
+		assertTrue(act_1.compareTo(act_A) < 0);
+		assertTrue(act_1.compareTo(act_a) < 0);
 	}
 
 	@Test

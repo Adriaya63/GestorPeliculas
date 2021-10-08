@@ -69,5 +69,11 @@ public class ColeccionActores {
 		return null;
 	}
 	
-	ordenarLista!!! -> ¿Devuelve una ListaActores ordenada o un ArrayList<Actor> ordenado? ¿Creamos ListaActores?
+	public ListaActores obtenerListaOrdenada() {
+		ListaActores listaOrdenada = new ListaActores();
+		listaOrdenada.setLista(lista);
+		listaOrdenada.ordenarLista();
+		
+		return listaOrdenada;
+	}
 }

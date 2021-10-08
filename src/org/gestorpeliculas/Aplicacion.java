@@ -120,7 +120,7 @@ public class Aplicacion {
 		CatalogoPeliculas.getCatalogo().incrementarRecaudacionPelicula(pTitulo, pIncremento);
 	}
 	
-	public _____ obtenerListaOrdenadaDeActores() {
+	public ListaActores obtenerListaOrdenadaDeActores() {
 		//PRE:
 		//POST: Devuleve un ____ que conforma una lista ordenada de todos los actores de la aplicacion.
 	}
