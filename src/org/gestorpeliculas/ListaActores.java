@@ -18,4 +18,7 @@ public class ListaActores {
 		Collections.sort(this.lista);
 	}
 	
+	public void imprimir() {
+		
+	}
 }

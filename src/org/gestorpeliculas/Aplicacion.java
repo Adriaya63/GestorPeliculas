@@ -13,6 +13,7 @@ public class Aplicacion {
 		return aplicacion;
 	}
 
+	@SuppressWarnings("resource")
 	public void main(){
 		//PRE:
 		//POST: metodo principal que pedira por consola la accion a realizar
@@ -47,12 +48,12 @@ public class Aplicacion {
 			else if (res == 3){
 				System.out.println("Introduzca el nombre del actor.");
 				String nombreActor = scr.nextLine();
-				this.obtenerFilmografiaActor(nombreActor);
+				this.imprimirFilmografiaActor(nombreActor);
 			}
 			else if (res == 4){
 				System.out.println("Introduzca el nombre de la pelicula.");
 				String nombrePelicula = scr.nextLine();
-				this.obtenerRepartoPelicula(nombrePelicula);
+				this.imprimirRepartoPelicula(nombrePelicula);
 			}
 			else if (res == 5){
 				System.out.println("Introduzca el nombre de la pelicula y la cantidad.");
@@ -66,7 +67,7 @@ public class Aplicacion {
 				this.eliminarActor(nombreActor);
 			}
 			else if (res == 7){this.cargarDatosEnFichero();}
-			else if (res == 8){this.obtenerListaOrdenadaDeActores();}
+			else if (res == 8){this.imprimirListaOrdenadaDeActores();}
 		}
 	}
 	
@@ -80,11 +81,16 @@ public class Aplicacion {
 		//POST: Llama a la clase GestorDeFicheros para que se encargue de guardar todos los datos de la aplicacion
 	}
 	
-	public Actor buscarActor(String pNombreActor) {
+	public void buscarActor(String pNombreActor) {
 		//PRE: Recibe el nombre de un actor en formato String
 		//POST: Llama a ColeccionActores para que se encargue de buscar el actor y devolverlo en caso de encontrarlo.
 		//		En caso contrario devolverá null.
-		ColeccionActores.getColAct().buscarActor(pNombreActor);
+		Actor actor = ColeccionActores.getColAct().buscarActor(pNombreActor);
+		if(actor == null) {
+			
+		}else {
+			actor.imprimir();
+		}
 	}
 	
 	public void anadirActor(String pNombreActor, ListaNombres pFilmografia) {
@@ -99,18 +105,20 @@ public class Aplicacion {
 		ColeccionActores.getColAct().eliminarActor(pNombreActor);
 	}
 	
-	public ListaNombres obtenerFilmografiaActor(String pNombreActor) {
+	public void imprimirFilmografiaActor(String pNombreActor) {
 		//PRE: Recibe el nombre de un actor en formato String
 		//POST: LLama a ColeccionActores para que se encarge de obtener la filmografia del actor. en caso de que el actor no exista
 		// 		devolvera null.
-		ColeccionActores.getColAct().obtenerFilmografiaDeActor(pNombreActor);
+		ListaNombres filmografia = ColeccionActores.getColAct().obtenerFilmografiaDeActor(pNombreActor);
+		filmografia.imprimir();
 	}
 	
-	public ListaNombres obtenerRepartoPelicula(String pTitulo) {
+	public void imprimirRepartoPelicula(String pTitulo) {
 		//PRE: Recibe el titulo de una pelicula en formato String
 		//POST: LLama a CatalogoPeliculas para que se encarge de obtener el reparto de la pelicula. en caso de que la pelicula no exista
 		// 		devolvera null.
-		CatalogoPeliculas.getCatalogo().obtenerRepartoDePelicula(pTitulo);
+		ListaNombres reparto = CatalogoPeliculas.getCatalogo().obtenerRepartoDePelicula(pTitulo);
+		reparto.imprimir();
 	}
 	
 	public void incrementarRecaudacionPelicula(String pTitulo, int pIncremento) {
@@ -120,8 +128,12 @@ public class Aplicacion {
 		CatalogoPeliculas.getCatalogo().incrementarRecaudacionPelicula(pTitulo, pIncremento);
 	}
 	
-	public ListaActores obtenerListaOrdenadaDeActores() {
+	public void imprimirListaOrdenadaDeActores() {
 		//PRE:
-		//POST: Devuleve un ____ que conforma una lista ordenada de todos los actores de la aplicacion.
+		//POST: Se encarga de imprimir una lista ordenada de actores
+		
+		ListaActores listaOrdenada = ColeccionActores.getColAct().obtenerListaOrdenada();
+		listaOrdenada.imprimir();
+		
 	}
 }
