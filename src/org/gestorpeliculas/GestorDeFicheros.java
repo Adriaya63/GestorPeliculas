@@ -45,28 +45,28 @@ public class GestorDeFicheros {
 		//POST: Lee linea a linea el fichero y se encarga de llamar a CatalogoPeliculas y ColeccionActores por cada pelicula y actor que encuentra
 		//		de tal forma que se registran todas las peliculas y actores que aparecen en el fichero.
 
-			String linea;
-			while (entrada.hasNext()) {
-				linea = entrada.nextLine();
-				String[] cadena1 = linea.split("--->>>");
+		String linea;
+		while (entrada.hasNext()) {
+			linea = entrada.nextLine();
+			String[] cadena1 = linea.split("--->>>");
 				
-				if(cadena1.length>1){
-					String pelicula = cadena1[0];
-					String[] cadena2 = cadena1[1].split("[#]+");
-					ListaNombres actores = new ListaNombres();
-					ListaNombres peliculas = new ListaNombres();
-					peliculas.anadirNombre(pelicula);
+			if(cadena1.length>1){
+				String pelicula = cadena1[0];
+				String[] cadena2 = cadena1[1].split("[#]+");
+				ListaNombres actores = new ListaNombres();
+				ListaNombres peliculas = new ListaNombres();
+				peliculas.anadirNombre(pelicula);
 					
-					for(int i=0;i<cadena2.length;i++) {
-					  actores.anadirNombre(cadena2[i]);
-					  ColeccionActores.getColAct().anadirActor(cadena2[i], peliculas);
-					}
-					
-					CatalogoPeliculas.getCatalogo().anadirPelicula(pelicula, actores);
+				for(int i=0;i<cadena2.length;i++) {
+					 actores.anadirNombre(cadena2[i]);
+					 ColeccionActores.getColAct().anadirActor(cadena2[i], peliculas);
 				}
+					
+				CatalogoPeliculas.getCatalogo().anadirPelicula(pelicula, actores);
 			}
+		}
     
-			this.cerrarFicheroEntrada();
+		this.cerrarFicheroEntrada();
 	}
 	
 	public void guardarDatos() {

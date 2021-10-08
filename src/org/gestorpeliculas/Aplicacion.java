@@ -23,50 +23,69 @@ public class Aplicacion {
 		//POST: metodo principal que pedira por consola la accion a realizar
 
 		Scanner scr = new Scanner(System.in);
+		String nombreActor = "";
 		this.imprimirMenu();
 		int res = scr.nextInt();
 		
 		while(res!=9){
 			
-			if (res == 0){this.cargarDatosEnFichero();}
-			else if (res == 1){
-				System.out.println("Introduzca el nombre del actor que quiere buscar.");
-				String nombreActor = scr.nextLine();
-				this.buscarActor(nombreActor);
+			switch(res) {
+				case 0:
+					this.cargarDatosEnFichero();
+				break;
+				
+				case 1:
+					System.out.println("Introduzca el nombre del actor que quiere buscar.");
+					nombreActor = scr.nextLine();
+					this.buscarActor(nombreActor);
+				break;
+				
+				case 2:
+					System.out.println("Introduzca el nombre del actor que quiere añadir.");
+					nombreActor = scr.nextLine();
+					ListaNombres fil = new ListaNombres();
+					this.anadirActor(nombreActor, fil);
+				break;
+				
+				case 3:
+					System.out.println("Introduzca el nombre del actor.");
+					nombreActor = scr.nextLine();
+					this.imprimirFilmografiaActor(nombreActor);
+				break;
+				
+				case 4:
+					System.out.println("Introduzca el nombre de la pelicula.");
+					String nombrePelicula = scr.nextLine();
+					this.imprimirRepartoPelicula(nombrePelicula);
+				break;
+				
+				case 5:
+					System.out.println("Introduzca el nombre de la pelicula y la cantidad.");
+					nombrePelicula = scr.nextLine();
+					int cant = scr.nextInt();
+					this.incrementarRecaudacionPelicula(nombrePelicula, cant);
+				break;
+				
+				case 6:
+					System.out.println("Introduzca el nombre del actor que quiere eliminar.");
+					nombreActor = scr.nextLine();
+					this.eliminarActor(nombreActor);
+				break;
+				
+				case 7:
+					this.cargarDatosEnFichero();
+				break;
+				
+				case 8:
+					this.imprimirListaOrdenadaDeActores();
+				break;
+				
+				case 9:
+				break;
 			}
-			else if (res == 2){
-				System.out.println("Introduzca el nombre del actor que quiere añadir.");
-				String nombreActor = scr.nextLine();
-				ListaNombres fil = new ListaNombres();
-				this.anadirActor(nombreActor, fil);
-			}
-			else if (res == 3){
-				System.out.println("Introduzca el nombre del actor.");
-				String nombreActor = scr.nextLine();
-				this.imprimirFilmografiaActor(nombreActor);
-			}
-			else if (res == 4){
-				System.out.println("Introduzca el nombre de la pelicula.");
-				String nombrePelicula = scr.nextLine();
-				this.imprimirRepartoPelicula(nombrePelicula);
-			}
-			else if (res == 5){
-				System.out.println("Introduzca el nombre de la pelicula y la cantidad.");
-				String nombrePelicula = scr.nextLine();
-				int cant = scr.nextInt();
-				this.incrementarRecaudacionPelicula(nombrePelicula, cant);
-			}
-			else if (res == 6){
-				System.out.println("Introduzca el nombre del actor que quiere eliminar.");
-				String nombreActor = scr.nextLine();
-				this.eliminarActor(nombreActor);
-			}
-			else if (res == 7){this.cargarDatosEnFichero();}
-			else if (res == 8){this.imprimirListaOrdenadaDeActores();}
-			
-			this.imprimirMenu();
-			res = scr.nextInt();
 		}
+			
+			
 	}
 	
 	private void imprimirMenu() {

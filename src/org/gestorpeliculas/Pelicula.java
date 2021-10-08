@@ -25,6 +25,7 @@ public class Pelicula {
 	public boolean equals(Object obj) {
 		//PRE: Recibe un objeto de tipo Pelicula
 		//POST: Devuelve un booleano indicando si son iguales en funcion de si tienen el mismo nombre
+		if(obj == null) return false;
 		
 		Pelicula pel = (Pelicula)obj;
 		return pel.tieneEsteTitulo(this.titulo);
