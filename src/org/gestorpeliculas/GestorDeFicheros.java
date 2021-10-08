@@ -56,7 +56,7 @@ public class GestorDeFicheros {
 				ListaNombres actores = new ListaNombres();
 				ListaNombres peliculas = new ListaNombres();
 				peliculas.anadirNombre(pelicula);
-					
+				
 				for(int i=0;i<cadena2.length;i++) {
 					 actores.anadirNombre(cadena2[i]);
 					 ColeccionActores.getColAct().anadirActor(cadena2[i], peliculas);
