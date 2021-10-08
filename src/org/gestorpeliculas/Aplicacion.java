@@ -12,27 +12,22 @@ public class Aplicacion {
 		if(aplicacion == null) aplicacion = new Aplicacion();
 		return aplicacion;
 	}
-
+	
+	public static void main(String[] args) {
+		Aplicacion.aplicacion().initApp();
+	}
+	
 	@SuppressWarnings("resource")
-	public void main(){
+	public void initApp(){
 		//PRE:
 		//POST: metodo principal que pedira por consola la accion a realizar
-		System.out.println("MENU PRINCIPAL");
-		System.out.println("Seleccione una de las siguoientes opciones:");
-		System.out.println("0- Cargar los datos del fichero.");
-		System.out.println("1- Bucar actor/actiz.");
-		System.out.println("2- Añadir actor/actriz.");
-		System.out.println("3- Obtener peliculas de un actor/actiz.");
-		System.out.println("4- Obtener reparto de una pelicula.");
-		System.out.println("5- Incrementar la recaudacion de una pelicula.");
-		System.out.println("6- Eliminar un actor/actriz.");
-		System.out.println("7- Guardar datos en fichero.");
-		System.out.println("8- Obtener lista ordenada de actores.");
-		System.out.println("9- Finalizar programa.");
 
 		Scanner scr = new Scanner(System.in);
+		this.imprimirMenu();
 		int res = scr.nextInt();
+		
 		while(res!=9){
+			
 			if (res == 0){this.cargarDatosEnFichero();}
 			else if (res == 1){
 				System.out.println("Introduzca el nombre del actor que quiere buscar.");
@@ -68,20 +63,46 @@ public class Aplicacion {
 			}
 			else if (res == 7){this.cargarDatosEnFichero();}
 			else if (res == 8){this.imprimirListaOrdenadaDeActores();}
+			
+			this.imprimirMenu();
+			res = scr.nextInt();
 		}
 	}
 	
-	public void cargarDatosEnFichero() {
+	private void imprimirMenu() {
+		//PRE: 
+		//POST: Imprime por consola el menú de la aplicacion
+		
+		System.out.println("MENU PRINCIPAL");
+		System.out.println("Seleccione una de las siguoientes opciones:");
+		System.out.println("0- Cargar los datos del fichero.");
+		System.out.println("1- Bucar actor/actiz.");
+		System.out.println("2- Añadir actor/actriz.");
+		System.out.println("3- Obtener peliculas de un actor/actiz.");
+		System.out.println("4- Obtener reparto de una pelicula.");
+		System.out.println("5- Incrementar la recaudacion de una pelicula.");
+		System.out.println("6- Eliminar un actor/actriz.");
+		System.out.println("7- Guardar datos en fichero.");
+		System.out.println("8- Obtener lista ordenada de actores.");
+		System.out.println("9- Finalizar programa.");
+	}
+	
+	private void limpiarConsola() {
+		System.out.print("\033[H\033[2J");
+		System.out.flush();
+	}
+	
+	private void cargarDatosEnFichero() {
 		//PRE:
 		//POST: Llama a la clase GestorDeFicheros para que se encargue de cargar todos los datos de la aplicacion
 	}
 	
-	public void guardarDatosEnFichero() {
+	private void guardarDatosEnFichero() {
 		//PRE:
 		//POST: Llama a la clase GestorDeFicheros para que se encargue de guardar todos los datos de la aplicacion
 	}
 	
-	public void buscarActor(String pNombreActor) {
+	private void buscarActor(String pNombreActor) {
 		//PRE: Recibe el nombre de un actor en formato String
 		//POST: Llama a ColeccionActores para que se encargue de buscar el actor y devolverlo en caso de encontrarlo.
 		//		En caso contrario devolverá null.
@@ -93,19 +114,19 @@ public class Aplicacion {
 		}
 	}
 	
-	public void anadirActor(String pNombreActor, ListaNombres pFilmografia) {
+	private void anadirActor(String pNombreActor, ListaNombres pFilmografia) {
 		//PRE: Recibe el nombre de un actor en formato String
 		//POST: LLama a ColeccionActores para que se encarge de anadir ese actor a la aplicacion
 		ColeccionActores.getColAct().anadirActor(pNombreActor, pFilmografia);
 	}
 	
-	public void eliminarActor(String pNombreActor) {
+	private void eliminarActor(String pNombreActor) {
 		//PRE: Recibe el nombre de un actor en formato String
 		//POST: Llama a ColeccionActores para que se encargue de elminar a ese actor. Si ese actor no esta anadico se indicará.
 		ColeccionActores.getColAct().eliminarActor(pNombreActor);
 	}
 	
-	public void imprimirFilmografiaActor(String pNombreActor) {
+	private void imprimirFilmografiaActor(String pNombreActor) {
 		//PRE: Recibe el nombre de un actor en formato String
 		//POST: LLama a ColeccionActores para que se encarge de obtener la filmografia del actor. en caso de que el actor no exista
 		// 		devolvera null.
@@ -113,7 +134,7 @@ public class Aplicacion {
 		filmografia.imprimir();
 	}
 	
-	public void imprimirRepartoPelicula(String pTitulo) {
+	private void imprimirRepartoPelicula(String pTitulo) {
 		//PRE: Recibe el titulo de una pelicula en formato String
 		//POST: LLama a CatalogoPeliculas para que se encarge de obtener el reparto de la pelicula. en caso de que la pelicula no exista
 		// 		devolvera null.
@@ -121,14 +142,14 @@ public class Aplicacion {
 		reparto.imprimir();
 	}
 	
-	public void incrementarRecaudacionPelicula(String pTitulo, int pIncremento) {
+	private void incrementarRecaudacionPelicula(String pTitulo, int pIncremento) {
 		//PRE: Recibe el titulo de una pelicula en formato String y un int que conforma el incremento de la recaudacion de la pelicula
 		//POST: Llama a CatalogoPeliculas para que se encargue de buscar la pelicula e incermentar su recaudacion en caso de encontrarla.
 		//		En caso contrario se indicará que la pelicula no esta añadida.
 		CatalogoPeliculas.getCatalogo().incrementarRecaudacionPelicula(pTitulo, pIncremento);
 	}
 	
-	public void imprimirListaOrdenadaDeActores() {
+	private void imprimirListaOrdenadaDeActores() {
 		//PRE:
 		//POST: Se encarga de imprimir una lista ordenada de actores
 		
