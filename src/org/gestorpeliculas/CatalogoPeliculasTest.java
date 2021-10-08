@@ -127,10 +127,10 @@ public class CatalogoPeliculasTest {
 		p2 = cp.buscarPelicula("p2");
 		a1 = colAct.buscarActor("a1");
 		a2 = colAct.buscarActor("a2");
-		assertTrue(p2.obtenerReparto().esta("a1"));
 		assertTrue(p2.obtenerReparto().esta("a2"));
 		assertTrue(a1.obtenerFilmografia().esta("p2"));
 		assertTrue(a2.obtenerFilmografia().esta("p2"));
+		
 		
 		cp.anadirPelicula("p1", reparto1);
 		cp.eliminarPelicula("p2");

@@ -58,7 +58,9 @@ public class ColeccionActoresTest {
 		assertTrue(a1.obtenerFilmografia().esta("p1"));
 		Pelicula p1 = cp.buscarPelicula("p1");
 		assertTrue(p1.tieneEsteTitulo("p1"));
+		p1.obtenerReparto().imprimir();
 		assertTrue(p1.obtenerReparto().esta("a1"));
+		
 		
 		filmografia1.anadirNombre("p2");
 		colAct.anadirActor("a1", filmografia1);
