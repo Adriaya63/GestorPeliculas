@@ -1,6 +1,11 @@
 package org.gestorpeliculas;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+
+import org.eda.gestorPeliculas.Actor;
+import org.eda.gestorPeliculas.CatalogoPeliculas;
+import org.eda.gestorPeliculas.Pelicula;
 
 public class ColeccionActores {
 	//MAE que controla todos los actores de la aplicacion
@@ -48,7 +53,27 @@ public class ColeccionActores {
 		//		y se itera sobre su filmografia añadiendo el nombre del actor al reparto de las peliculas en las que aparece. 
 		//		Si alguna pelicula aun no esta anadida, se crea una pelicula nueva y se anade con el actor en su reparto.
 		//		Si por el contrario el actor ya existe en la lista, se actualiza su filmografia con un proceso similar al anterior.
+		Actor act = this.buscarActor(pNombreActor);
+		if(act == null) {
+				act = new Actor(pNombreActor);
+				this.lista.add(act);
+		}
 		
+		Iterator<java.util.Map.Entry<String, Integer>> itr = pFilmografia.iterator();
+		
+		while(itr.hasNext()) {
+			String titulo = itr.next().getKey();
+			act.anadirEstaPeliculaAFilmografia(titulo);
+			
+			Pelicula peli = CatalogoPeliculas.getCatalogo().buscarPelicula(titulo);
+			if(peli == null) {
+				ListaNombres reparto = new ListaNombres();
+				reparto.anadirNombre(pNombreActor);
+				CatalogoPeliculas.getCatalogo().anadirPelicula(titulo, pFilmografia);
+			}else {
+				peli.anadirEsteActorAlReparto(pNombreActor);
+			}
+		}
 		
 	}
 	
@@ -56,7 +81,24 @@ public class ColeccionActores {
 		//PRE: Recibe un String con el nombre de un actor
 		//POST: Si esta el actor, se elimina de la coleccion de actores y de todos los repartos de peliculas en los que aparece.
 		//		Si no esta, no se hace nada
-
+		Actor act = this.buscarActor(pNombreActor);
+		if(act == null) return;
+		
+		Iterator<java.util.Map.Entry<String, Integer>> itr = act.obtenerFilmografia().iterator();
+		
+		while(itr.hasNext()) {
+			String titulo = itr.next().getKey();
+			Pelicula pelicula = CatalogoPeliculas.getCatalogo().buscarPelicula(titulo);
+			if(pelicula != null) {
+				pelicula.eliminarEsteActorDelReparto(pNombreActor);
+			}
+			
+			if (pelicula.obtenerReparto().getSize() == 0) {
+				CatalogoPeliculas.getCatalogo().eliminarPelicula(titulo);
+			}
+		}
+		
+		this.lista.remove(act);
 		
 	}
 	
