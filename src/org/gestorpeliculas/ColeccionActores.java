@@ -3,9 +3,7 @@ package org.gestorpeliculas;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import org.eda.gestorPeliculas.Actor;
-import org.eda.gestorPeliculas.CatalogoPeliculas;
-import org.eda.gestorPeliculas.Pelicula;
+import java.util.Map.Entry;
 
 public class ColeccionActores {
 	//MAE que controla todos los actores de la aplicacion
