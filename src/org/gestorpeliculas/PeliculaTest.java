@@ -69,10 +69,5 @@ public class PeliculaTest {
 		pel_a.eliminarEsteActorDelReparto("p1");
 		assertFalse(pel_a.obtenerReparto().esta("p1"));
 	}
-
-	@Test
-	public void testIncrementarRecaudacionEn() {
-		fail("Not yet implemented");
-	}
-
+	
 }

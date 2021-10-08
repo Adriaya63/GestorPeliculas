@@ -47,6 +47,8 @@ public class Actor implements Comparable<Actor>{
 		//PRE: recibe un objeto de tipo Actor
 		//POST: Devuelve un booleano indicando si son iguales en base a si tienen el mismo nombre;
 		
+		if(obj == null) return false;
+		
 		Actor act = (Actor)obj;
 		return act.tieneEsteNombre(this.nombre);
 	}

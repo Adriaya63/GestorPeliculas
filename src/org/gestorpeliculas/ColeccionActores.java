@@ -64,7 +64,7 @@ public class ColeccionActores {
 				this.lista.add(act);
 			}
 		
-		Iterator<java.util.Map.Entry<String, Integer>> itr = pFilmografia.iterator();
+		Iterator<Entry<String, Integer>> itr = pFilmografia.iterator();
 		
 		while(itr.hasNext()) {
 			String titulo = itr.next().getKey();
@@ -89,7 +89,7 @@ public class ColeccionActores {
 		Actor act = this.buscarActor(pNombreActor);
 		if(act == null) return;
 		
-		Iterator<java.util.Map.Entry<String, Integer>> itr = act.obtenerFilmografia().iterator();
+		Iterator<Entry<String, Integer>> itr = act.obtenerFilmografia().iterator();
 		
 		while(itr.hasNext()) {
 			String titulo = itr.next().getKey();

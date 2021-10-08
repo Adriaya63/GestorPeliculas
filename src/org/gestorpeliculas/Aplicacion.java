@@ -1,12 +1,18 @@
 package org.gestorpeliculas;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public class Aplicacion {
 	private static Aplicacion aplicacion;
+	private BufferedReader br;
 	
 	//Contructora y getters
-	private Aplicacion() {}
+	private Aplicacion() {
+		this.br = new BufferedReader(new InputStreamReader(System.in));
+	}
 	
 	public static Aplicacion aplicacion() {
 		if(aplicacion == null) aplicacion = new Aplicacion();
@@ -17,56 +23,71 @@ public class Aplicacion {
 		Aplicacion.aplicacion().initApp();
 	}
 	
-	@SuppressWarnings("resource")
 	public void initApp(){
 		//PRE:
 		//POST: metodo principal que pedira por consola la accion a realizar
 
-		Scanner scr = new Scanner(System.in);
-		this.imprimirMenu();
-		int res = scr.nextInt();
+		String nombreActor = "";
+		String nombrePelicula = "";
+		int res = 10;
 		
 		while(res!=9){
-			
-			if (res == 0){this.cargarDatosEnFichero();}
-			else if (res == 1){
-				System.out.println("Introduzca el nombre del actor que quiere buscar.");
-				String nombreActor = scr.nextLine();
-				this.buscarActor(nombreActor);
-			}
-			else if (res == 2){
-				System.out.println("Introduzca el nombre del actor que quiere añadir.");
-				String nombreActor = scr.nextLine();
-				ListaNombres fil = new ListaNombres();
-				this.anadirActor(nombreActor, fil);
-			}
-			else if (res == 3){
-				System.out.println("Introduzca el nombre del actor.");
-				String nombreActor = scr.nextLine();
-				this.imprimirFilmografiaActor(nombreActor);
-			}
-			else if (res == 4){
-				System.out.println("Introduzca el nombre de la pelicula.");
-				String nombrePelicula = scr.nextLine();
-				this.imprimirRepartoPelicula(nombrePelicula);
-			}
-			else if (res == 5){
-				System.out.println("Introduzca el nombre de la pelicula y la cantidad.");
-				String nombrePelicula = scr.nextLine();
-				int cant = scr.nextInt();
-				this.incrementarRecaudacionPelicula(nombrePelicula, cant);
-			}
-			else if (res == 6){
-				System.out.println("Introduzca el nombre del actor que quiere eliminar.");
-				String nombreActor = scr.nextLine();
-				this.eliminarActor(nombreActor);
-			}
-			else if (res == 7){this.cargarDatosEnFichero();}
-			else if (res == 8){this.imprimirListaOrdenadaDeActores();}
-			
 			this.imprimirMenu();
-			res = scr.nextInt();
+			
+			
+			switch(res) {
+				case 0:
+					this.cargarDatosEnFichero();
+				break;
+				
+				case 1:
+					nombreActor = leerString("Introduzca el nombre del actor que quiere buscar.");
+					this.buscarActor(nombreActor);
+				break;
+				
+				case 2:
+					nombreActor = leerString("Introduzca el nombre del actor que quiere añadir.");
+					ListaNombres fil = new ListaNombres();
+					this.anadirActor(nombreActor, fil);
+				break;
+				
+				case 3:
+					nombreActor = leerString("Introduzca el nombre del actor.");
+					this.imprimirFilmografiaActor(nombreActor);
+				break;
+				
+				case 4:
+					nombrePelicula = leerString("Introduzca el nombre de la pelicula.");
+					this.imprimirRepartoPelicula(nombrePelicula);
+				break;
+				
+				case 5:
+					System.out.println("Introduzca el nombre de la pelicula");
+					nombrePelicula = leerString("Introduzca el nombre de la pelicula");
+					int cant = leerInt("Introduzca la recaudacion de la pelicula");
+					this.incrementarRecaudacionPelicula(nombrePelicula, cant);
+				break;
+				
+				case 6:
+					System.out.println("Introduzca el nombre del actor que quiere eliminar.");
+					nombreActor = leerString("Introduzca el nombre del actor que quiere eliminar.");
+					this.eliminarActor(nombreActor);
+				break;
+				
+				case 7:
+					this.cargarDatosEnFichero();
+				break;
+				
+				case 8:
+					this.imprimirListaOrdenadaDeActores();
+				break;
+			}
+			
+			leerString("Introduce culaquier valor para continuar");
+			this.limpiarConsola();
 		}
+			
+			
 	}
 	
 	private void imprimirMenu() {
@@ -90,6 +111,32 @@ public class Aplicacion {
 	private void limpiarConsola() {
 		System.out.print("\033[H\033[2J");
 		System.out.flush();
+	}
+	
+	private String leerString(String pMensaje) {
+		System.out.println(pMensaje);
+		String input = "";
+		
+		try {
+			input = this.br.readLine();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return input;
+	}
+	
+	private int leerInt(String pMensaje) {
+		System.out.println(pMensaje);
+		String input = "";
+		
+		try {
+			input = this.br.readLine();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return Integer.parseInt(input);
 	}
 	
 	private void cargarDatosEnFichero() {
