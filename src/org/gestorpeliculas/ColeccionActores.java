@@ -1,6 +1,8 @@
 package org.gestorpeliculas;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map.Entry;
 
 public class ColeccionActores {
 	//MAE que controla todos los actores de la aplicacion
