@@ -21,6 +21,12 @@ public class ListaNombres {
 		return this.lista.entrySet().iterator();
 	}
 	
+	public int getSize() {
+		//PRE:
+		//POST: Devuelve el numero de elementos en la lista
+		return this.lista.size();
+	}
+	
 	public void anadirNombre(String pNombre) {
 		//PRE: Recibe un string con el nombre a insertar
 		//POST: Se inserta el nombre como key en la tabla de hash y su valor es 0
