@@ -56,7 +56,7 @@ public class CatalogoPeliculas{
 		
 		Pelicula peli = this.buscarPelicula(pTitulo);
 		if(peli == null) {
-				peli = new Pelicula (pTitulo);
+				peli = new Pelicula(pTitulo);
 				this.lista.add(peli);
 		}
 		
@@ -64,7 +64,7 @@ public class CatalogoPeliculas{
 		
 		while(itr.hasNext()) {
 			String nombre = itr.next().getKey();
-			peli.anadirEsteActorAlReparto(pTitulo);
+			peli.anadirEsteActorAlReparto(nombre);
 			
 			Actor act = ColeccionActores.getColAct().buscarActor(nombre);
 			if(act == null) {
@@ -108,13 +108,6 @@ public class CatalogoPeliculas{
 		Pelicula pel = this.buscarPelicula(pTitulo);
 		if(pel != null) return pel.obtenerReparto();
 		return null;
-	}
-	
-	public void incrementarRecaudacionPelicula(String pTitulo, int pIncremento) {
-		//PRE: Recibe un String con el titulo de una pelicula
-		//POST: Busca la pelicula e incrementa su recaudación en funcion de pIncremento. Si la pelicula no esta se lanza una excepcion (futuro)
-		Pelicula pel = this.buscarPelicula(pTitulo);
-		if (pel != null){pel.incrementarRecaudacionEn(pIncremento);}
 	}
 	
 	public void imprimir() {

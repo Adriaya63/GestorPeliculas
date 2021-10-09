@@ -19,6 +19,14 @@ public class ListaActores {
 	}
 	
 	public void imprimir() {
-		
+		//PRE:
+		//POST: Imprime por consola la lista con los nombres de los actores
+		int numActores = this.lista.size();
+		for(Actor act: this.lista) {
+			numActores--;
+			System.out.print(act.getNombre());
+			if(numActores > 0) System.out.print(", "); 
+		}
+		System.out.print("\n");
 	}
 }

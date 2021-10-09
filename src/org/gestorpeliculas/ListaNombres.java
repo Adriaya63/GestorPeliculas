@@ -43,9 +43,13 @@ public class ListaNombres {
 		//PRE:
 		//POST: Se imprime la tabla con todos los nombres (solo las key del hashmap)
 		
-		this.lista.entrySet().forEach(entry -> {
-			System.out.println(entry.getKey());
-		});
+		int numElm = this.lista.entrySet().size();
+		for(Entry<String, Integer> entry: this.lista.entrySet()) {
+			numElm--;
+			System.out.print(entry.getKey());
+			if(numElm > 0) System.out.print(", ");
+		}
+		System.out.print("\n");
 	}
 	
 }

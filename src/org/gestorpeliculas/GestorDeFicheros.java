@@ -12,10 +12,10 @@ import java.util.Scanner;
 public class GestorDeFicheros {
 	private static GestorDeFicheros gdf;
 	//Ruta relativa del fichero a leer
-	private final String rutaFicheroEntrada = System.getProperty("user.dir") + File.separator + "src" + File.separator + "files" + File.separator + "input.txt";
+	private final String rutaFicheroEntrada = System.getProperty("user.dir")  + File.separator + "files" + File.separator + "input.txt";
 	private Scanner entrada;
 	
-	private final String rutaFicheroSalida = System.getProperty("user.dir") + File.separator + "src" + File.separator + "files" + File.separator + "output.txt";
+	private final String rutaFicheroSalida = System.getProperty("user.dir") + File.separator + "files" + File.separator + "output.txt";
 	private FileWriter salida;
 	//Constructora y getters
 	@SuppressWarnings("unused")
@@ -51,22 +51,22 @@ public class GestorDeFicheros {
 			String[] cadena1 = linea.split("--->>>");
 				
 			if(cadena1.length>1){
-				String pelicula = cadena1[0];
+				String pelicula = cadena1[0].trim();
 				String[] cadena2 = cadena1[1].split("[#]+");
 				ListaNombres actores = new ListaNombres();
 				ListaNombres peliculas = new ListaNombres();
 				peliculas.anadirNombre(pelicula);
 				
 				for(int i=0;i<cadena2.length;i++) {
-					 actores.anadirNombre(cadena2[i]);
-					 ColeccionActores.getColAct().anadirActor(cadena2[i], peliculas);
+					String nombreActor = cadena2[i].trim();
+					actores.anadirNombre(nombreActor);
+					ColeccionActores.getColAct().anadirActor(nombreActor, peliculas);
 				}
 					
 				CatalogoPeliculas.getCatalogo().anadirPelicula(pelicula, actores);
 			}
 		}
     
-		this.cerrarFicheroEntrada();
 	}
 	
 	public void guardarDatos() {
@@ -109,16 +109,15 @@ public class GestorDeFicheros {
 			e.printStackTrace();
 		}
 		
-		cerrarFicheroSalida();
 	}
 	
-	private void cerrarFicheroEntrada() {
+	public void cerrarFicheroEntrada() {
 		//PRE:
 		//POST: Termina la lectura del fichero de entrada y lo cierra.
 		entrada.close();
 	}
 	
-	private void cerrarFicheroSalida() {
+	public void cerrarFicheroSalida() {
 		//PRE:
 		//POST: Termina la escritura del fichero de salida y lo cierra.
 		

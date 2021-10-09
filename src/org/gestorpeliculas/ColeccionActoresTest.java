@@ -58,7 +58,6 @@ public class ColeccionActoresTest {
 		assertTrue(a1.obtenerFilmografia().esta("p1"));
 		Pelicula p1 = cp.buscarPelicula("p1");
 		assertTrue(p1.tieneEsteTitulo("p1"));
-		p1.obtenerReparto().imprimir();
 		assertTrue(p1.obtenerReparto().esta("a1"));
 		
 		
@@ -103,7 +102,7 @@ public class ColeccionActoresTest {
 		colAct.anadirActor("a1", filmografia1);
 		ListaNombres filmografia2 = new ListaNombres();
 		filmografia2.anadirNombre("p2");
-		colAct.anadirActor("a2", filmografia1);
+		colAct.anadirActor("a2", filmografia2);
 		colAct.eliminarActor("a1");
 		assertEquals(colAct.buscarActor("a1"), null);
 		assertEquals(cp.buscarPelicula("p1"), null);

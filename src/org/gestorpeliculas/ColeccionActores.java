@@ -68,7 +68,7 @@ public class ColeccionActores {
 			if(peli == null) {
 				ListaNombres reparto = new ListaNombres();
 				reparto.anadirNombre(pNombreActor);
-				CatalogoPeliculas.getCatalogo().anadirPelicula(titulo, pFilmografia);
+				CatalogoPeliculas.getCatalogo().anadirPelicula(titulo, reparto);
 			}else {
 				peli.anadirEsteActorAlReparto(pNombreActor);
 			}

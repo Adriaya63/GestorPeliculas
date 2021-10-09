@@ -86,7 +86,8 @@ public class Actor implements Comparable<Actor>{
 	public void imprimir() {
 		//PRE:
 		//POST: imprime informacion sobre el actor
-		System.out.println("Nombre: "+this.nombre);
+		System.out.println("Nombre: "+ this.nombre);
+		System.out.print("Filmografia: ");
 		this.filmografia.imprimir();
 	}
 

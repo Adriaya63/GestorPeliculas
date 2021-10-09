@@ -75,7 +75,9 @@ public class Pelicula {
 		//PRE:
 		//POST: imprime por consola informacion relevante sobre la pelicula
 
-		System.out.println("Titulo: "+this.titulo + " Recaudacion: " + this.recaudacion);
+		System.out.println("Titulo: "+this.titulo); 
+		System.out.println(" Recaudacion: " + this.recaudacion);
+		System.out.print("Reparto: ");
 		this.reparto.imprimir();
 	}
 }
