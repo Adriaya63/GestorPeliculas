@@ -1,5 +1,6 @@
 package org.gestorpeliculas;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -16,7 +17,7 @@ public class GestorDeFicheros {
 	private Scanner entrada;
 	
 	private final String rutaFicheroSalida = System.getProperty("user.dir") + File.separator + "files" + File.separator + "output.txt";
-	private FileWriter salida;
+	private BufferedWriter salida;
 	//Constructora y getters
 	@SuppressWarnings("unused")
 	private GestorDeFicheros() throws FileNotFoundException, IOException{
@@ -29,7 +30,7 @@ public class GestorDeFicheros {
 		if(ficheroSalida == null) throw new IOException("Error creating file");
 		
 		//Abrimos el fichero de escritura. Si no se puede, lanzamos una excepcion
-		salida = new FileWriter(rutaFicheroSalida, false);
+		salida = new BufferedWriter(new FileWriter(rutaFicheroSalida, false));
 		if(salida == null) throw new IOException("Could'nt open " + rutaFicheroSalida);
 			
 	}
@@ -76,7 +77,6 @@ public class GestorDeFicheros {
 		//		donde cada linea es una pelicula distinta.
 		
 		Iterator<Pelicula> peliculas = CatalogoPeliculas.getCatalogo().iterator();
-		String datos = "";
 		
 		while(peliculas.hasNext()) {
 			Pelicula pel = peliculas.next();
@@ -98,15 +98,12 @@ public class GestorDeFicheros {
 				}	
 			}
 			
-			datos += linea + " \n";
-			
-		}
-		
-		
-		try {
-			salida.write(datos);
-		} catch (IOException e) {
-			e.printStackTrace();
+			try {
+				salida.write(linea);
+				salida.newLine();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 		
 	}

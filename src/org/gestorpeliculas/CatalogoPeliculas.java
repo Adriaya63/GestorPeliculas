@@ -1,15 +1,16 @@
 package org.gestorpeliculas;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 
 public class CatalogoPeliculas{
 	private static CatalogoPeliculas cp;
-	private ArrayList<Pelicula> lista;
+	private HashMap<String, Pelicula> lista;
 	
 	//Constructora y getters
 	private CatalogoPeliculas() {
-		this.lista = new ArrayList<Pelicula>();
+		this.lista = new HashMap<String, Pelicula>();
 	}
 	
 	//Metodo para facilitar los test de la clase CatalogoPeliculas
@@ -18,9 +19,10 @@ public class CatalogoPeliculas{
 		cp = null;
 	}
 	
-	//Get de iterador para poder cargar los datos en el fichero
+	//Get de iterador para poder guardar los datos en el fichero
 	public Iterator<Pelicula> iterator(){
-		return this.lista.iterator();
+		ArrayList<Pelicula> listaPeliculas = new ArrayList<Pelicula>(this.lista.values());
+		return listaPeliculas.iterator();
 	}
 	
 	public static CatalogoPeliculas getCatalogo() {
@@ -37,12 +39,7 @@ public class CatalogoPeliculas{
 		//para buscar una pelicula en la lista podemos crear un nuevo objeto con dicho nombre, buscarla y luego eliminar
 		//la pelicula auxiliar.
 		
-		Pelicula aux = new Pelicula(pTitulo);
-		int index = this.lista.indexOf(aux);
-		aux = null;
-		
-		if(index != -1) return this.lista.get(index);
-		return null;
+		return this.lista.get(pTitulo);
 	}
 	
 	public void anadirPelicula(String pTitulo, ListaNombres pReparto) {
@@ -57,7 +54,7 @@ public class CatalogoPeliculas{
 		Pelicula peli = this.buscarPelicula(pTitulo);
 		if(peli == null) {
 				peli = new Pelicula(pTitulo);
-				this.lista.add(peli);
+				this.lista.put(pTitulo, peli);
 		}
 		
 		Iterator<java.util.Map.Entry<String, Integer>> itr = pReparto.iterator();
@@ -97,7 +94,7 @@ public class CatalogoPeliculas{
 			}
 		}
 		
-		this.lista.remove(peli);
+		this.lista.remove(pTitulo);
 
 	}
 	

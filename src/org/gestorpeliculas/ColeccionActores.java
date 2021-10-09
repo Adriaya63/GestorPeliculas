@@ -1,18 +1,18 @@
 package org.gestorpeliculas;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
 
 public class ColeccionActores {
 	//MAE que controla todos los actores de la aplicacion
 	private static ColeccionActores colAct;
-	
-	private ArrayList<Actor> lista;
-	
+	private HashMap<String, Actor> lista;
+
 	//Constructora y getters
 	private ColeccionActores() {
-		this.lista = new ArrayList<Actor>();
+		this.lista = new HashMap<String, Actor>();
 	}
 	//Metodo para facilitar los test de la clase ColeccionActores
 	//No usar fuera de los test
@@ -35,13 +35,7 @@ public class ColeccionActores {
 		//Como en la clase actor hemos definido que dos objetos actores son iguales si tienen el mismo nombre,
 		//para buscar un actor en la lista podemos crear un nuevo objeto actor con dicho nombre, buscarlo y luego eliminar
 		//el actor auxiliar.
-		
-		Actor aux = new Actor(pNombreActor);
-		int index = this.lista.indexOf(aux);
-		aux = null;
-		
-		if(index != -1) return this.lista.get(index);
-		return null;
+		return this.lista.get(pNombreActor);
 	}
 	
 	public void anadirActor(String pNombreActor, ListaNombres pFilmografia) {
@@ -55,7 +49,7 @@ public class ColeccionActores {
 		Actor act = this.buscarActor(pNombreActor);
 			if(act == null) {
 				act = new Actor(pNombreActor);
-				this.lista.add(act);
+				this.lista.put(pNombreActor, act);
 			}
 		
 		Iterator<Entry<String, Integer>> itr = pFilmografia.iterator();
@@ -97,7 +91,7 @@ public class ColeccionActores {
 			}
 		}
 		
-		this.lista.remove(act);
+		this.lista.remove(pNombreActor);
 		
 	}
 	
@@ -112,7 +106,7 @@ public class ColeccionActores {
 	
 	public ListaActores obtenerListaOrdenada() {
 		ListaActores listaOrdenada = new ListaActores();
-		listaOrdenada.setLista(lista);
+		listaOrdenada.setLista(new ArrayList<Actor>(lista.values()));
 		listaOrdenada.ordenarLista();
 		
 		return listaOrdenada;
