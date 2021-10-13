@@ -47,7 +47,7 @@ public class ListaNombres {
 		for(Entry<String, Integer> entry: this.lista.entrySet()) {
 			numElm--;
 			System.out.print(entry.getKey());
-			if(numElm > 0) System.out.print(", ");
+			if(numElm > 0) System.out.print(" | ");
 		}
 		System.out.print("\n");
 	}

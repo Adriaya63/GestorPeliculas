@@ -25,7 +25,7 @@ public class ListaActores {
 		for(Actor act: this.lista) {
 			numActores--;
 			System.out.print(act.getNombre());
-			if(numActores > 0) System.out.print(", "); 
+			if(numActores > 0) System.out.print(" | "); 
 		}
 		System.out.print("\n");
 	}
