@@ -16,7 +16,32 @@ public class GraphHash {
 		// Los nodos son nombres de actores)
 	
 		 // COMPLETAR CÓDIGO
-		
+		g.clear();
+		Iterator<Actor> itr = lista.getIterator();
+		Actor act = null;
+		while (itr.hasNext()) {
+			act = itr.next();
+			ArrayList<String> colegas = new ArrayList<String>();
+			Iterator<Entry<String, Integer>> itrAct = act.obtenerFilmografia().iterator();
+			while(itrAct.hasNext()) {
+				String titulo = itrAct.next().getKey();
+				Pelicula pel = CatalogoPeliculas.getCatalogo().buscarPelicula(titulo);
+				HashSet<String> aux = new HashSet<String>();
+				Iterator<Entry<String, Integer>> itrPel = pel.obtenerReparto().iterator();
+				while(itrPel.hasNext()) {
+					String nombre = itrPel.next().getKey();
+					if(!aux.contains(nombre)) {
+						aux.add(nombre);
+					}
+				}
+				Iterator<String> itrAux = aux.iterator();
+				while(itrAux.hasNext()) {
+				String nom = itrAux.next();
+				colegas.add(nom);
+				}
+			g.put(act.getNombre(), colegas);
+			}
+		}
 	}
 	
 	

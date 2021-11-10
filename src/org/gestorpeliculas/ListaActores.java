@@ -13,6 +13,10 @@ public class ListaActores {
 	public void setLista(ArrayList<Actor> pLista) {
 		this.lista = pLista;
 	}
+
+	public Iterator<Actor> getIterator() {
+		return this.lista.iterator();
+	}
 	
 	public void ordenarLista() {
 		Collections.sort(this.lista);
