@@ -103,6 +103,70 @@ public class GraphHash {
 	}
 	
 	// PROGRAMAS DE RPUEBA
+	public void pruebaCrearGrafo(){
+		ListaActores lista = this.crearEjemploCrearGrafo();
+		this.crearGrafo(lista);
+		this.print();
+	}
+	private ListaActores crearEjemploCrearGrafo(){
+		ListaActores lista = new ListaActores();
+		Actor a1 = new Actor("a1");
+		a1.anadirEstaPeliculaAFilmografia("p1");
+		a1.anadirEstaPeliculaAFilmografia("p2");
+		a1.anadirEstaPeliculaAFilmografia("p3");
+
+		Actor a2 = new Actor("a2");
+		a2.anadirEstaPeliculaAFilmografia("p1");
+		a2.anadirEstaPeliculaAFilmografia("p4");
+
+		Actor a3 = new Actor("a3");
+		a3.anadirEstaPeliculaAFilmografia("p2");
+		a3.anadirEstaPeliculaAFilmografia("p5");
+
+		Actor a4 = new Actor("a4");
+		a4.anadirEstaPeliculaAFilmografia("p3");
+		a4.anadirEstaPeliculaAFilmografia("p4");
+		a4.anadirEstaPeliculaAFilmografia("p5");
+
+		Actor a5 = new Actor("a5");
+		a5.anadirEstaPeliculaAFilmografia("p1");
+		
+		ListaNombres rep1 = new ListaNombres();
+		rep1.anadirNombre("a1");
+		rep1.anadirNombre("a2");
+		rep1.anadirNombre("a5");
+		CatalogoPeliculas.getCatalogo().anadirPelicula("p1", rep1);
+
+		ListaNombres rep2 = new ListaNombres();
+		rep2.anadirNombre("a1");
+		rep2.anadirNombre("a3");
+		CatalogoPeliculas.getCatalogo().anadirPelicula("p2", rep2);
+
+		ListaNombres rep3 = new ListaNombres();
+		rep3.anadirNombre("a1");
+		rep3.anadirNombre("a4");
+		CatalogoPeliculas.getCatalogo().anadirPelicula("p3", rep3);
+
+		ListaNombres rep4 = new ListaNombres();
+		rep4.anadirNombre("a2");
+		rep4.anadirNombre("a4");
+		CatalogoPeliculas.getCatalogo().anadirPelicula("p4", rep4);
+
+		ListaNombres rep5 = new ListaNombres();
+		rep5.anadirNombre("a3");
+		rep5.anadirNombre("a4");
+		CatalogoPeliculas.getCatalogo().anadirPelicula("p5", rep5);
+
+		ArrayList<Actor> listAct = new ArrayList<Actor>();
+		listAct.add(a1);
+		listAct.add(a2);
+		listAct.add(a3);
+		listAct.add(a4);
+		listAct.add(a5);
+
+		lista.setLista(listAct);
+		return lista;
+	}
 	public void pruebaEstanConectados() {
 		this.crearEjemploEstanConectados();
 		
