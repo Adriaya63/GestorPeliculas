@@ -42,6 +42,10 @@ public class GraphHash {
 			g.put(act.getNombre(), colegas);
 			}
 		}
+		//El costee algoritmo de este metodo es O(n*m*h)
+		//Donde n es el nº de actores de la lista,
+		//m es el nº de peliculas medio que tiene un actor
+		//y h es el nº de actores medio que tiene una pelicula
 	}
 	
 	
